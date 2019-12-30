@@ -16,3 +16,21 @@ zuul:
     course:
       path: /course/**
       serviceId: COURSE-SERVICE
+      
+    file:
+      path: /file/**
+      serviceId: FLIR-SERVICE
+      
+#zuul的hystrix超时配置
+hystrix:
+  command:
+    course-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+
+#配置zuul的ribbon的超时时间
+ribbon:
+  ReadTimeout: 5000
+  SocketTimeout: 5000      
